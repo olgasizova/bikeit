@@ -30,4 +30,4 @@ API's:
 
 ### Wireframes
 
-! [alt text] (https://wireframe.cc/DNQIrX)
+![alt text] (https://wireframe.cc/DNQIrX)
