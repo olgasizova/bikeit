@@ -17,15 +17,15 @@ Angelina is a 26 year old graduate student who loves to travel and meet new peop
 ### Technologies
 
 Back-end:
-Node.js and Express.js
+* Node.js and Express.js
 
 Front-end:
-JavaScript
-HTML & CSS
-Scrollmagic
+* JavaScript
+* HTML & CSS
+* Scrollmagic
 
-API's
-MapBox Directions
-Inspirational Quotes API for landing page (this is a maybe)
+API's:
+* MapBox Directions
+* Inspirational Quotes API for landing page (this is a maybe)
 
 ### Wireframes
