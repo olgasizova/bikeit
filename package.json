@@ -15,5 +15,18 @@
   "bugs": {
     "url": "https://github.com/olgasizova/bikeit/issues"
   },
-  "homepage": "https://github.com/olgasizova/bikeit#readme"
+  "homepage": "https://github.com/olgasizova/bikeit#readme",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "crypto": "0.0.3",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "morgan": "^1.7.0",
+    "node-fetch": "^1.6.3",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7"
+  }
 }
