@@ -69,3 +69,22 @@ position: absolute;
     font-size: 18px;
 
 }
+
+/*main landing page content styles*/
+.background-image-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+
+}
+.background-image {
+    height: 100%;
+    width: 100%;
+    background-clip: padding-box;
+    background-position: center;
+    background-size: 100%;
+
+    background-repeat: no-repeat;
+    background-image: url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1481398072/bicycle_lqfnul.jpg);
+}

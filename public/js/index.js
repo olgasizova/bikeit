@@ -22,11 +22,12 @@ function doOnLoad() {
     window.w2Layout = w2ui['layout'];
 
     w2Layout.load('top', 'html/part_header.html');
+    w2Layout.load('main', 'html/part_landing_main.html');
 
 
 
     if (!window.user.id) {
-        showLogin();
+        //showLogin();
     }
 }
 
