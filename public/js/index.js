@@ -19,10 +19,11 @@ function doOnLoad() {
         ]
     });
 
-    window.w2Layout = w2ui['layout'];
+    var w2Layout = w2ui['layout'];
 
     w2Layout.load('top', 'html/part_header.html');
     w2Layout.load('main', 'html/part_landing_main.html');
+    w2Layout.load('bottom', 'html/part_footer.html');
 
 
 
@@ -32,6 +33,8 @@ function doOnLoad() {
 }
 
 function showLogin() {
+
+    var w2Layout = w2ui['layout'];
 
     w2Layout.load('main', 'html/part_login.html', '', function () {
 
