@@ -1,0 +1,71 @@
+html,body {
+    position:absolute;
+    width:100%;
+    height:100%;
+    margin:auto;
+}
+
+#layout {
+    width:100%;
+    height:100%;
+}
+
+.w2ui-panel-content{
+    border: 1px solid #dfdfdf;
+/*    padding: 5px;*/
+}
+
+#form-login{
+    position:relative;
+    width:400px;
+    margin:auto;
+    margin-top:15%;
+    display:none;
+}
+
+div.header{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%
+}
+
+.logo-container{
+    width: 200px;
+    height: 70px;
+    margin-left: 50px;
+    padding-top: 10px;
+}
+
+#font-logo {
+font-family: 'Fugaz One', cursive;
+font-size: 60px;
+position: absolute;
+}
+
+.profile-circle-photo {
+    position: absolute;
+    right: 200px;
+    top: 25px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ADADAD;
+    background-size: contain;
+    background-image: url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1481396362/picture-icon_uvdswy.png);
+}
+
+.login-button {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    /*button style goes here*/
+    background-color: white;
+    border: black solid 3px;
+    color: black;
+    padding: 15px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+
+}
