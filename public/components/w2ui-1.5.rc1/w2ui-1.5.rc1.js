@@ -1496,8 +1496,9 @@ var w2utils = (function ($) {
             return false;
         }
         if (w2ui[params.name] != null) {
-            console.log('ERROR: The parameter "name" is not unique. There are other objects already created with the same name (obj: '+ params.name +').');
-            return false;
+            console.error('ERROR: The parameter "name" is not unique. There are other objects already created with the same name (obj: ' + params.name + ').');
+            w2ui[params.name] = null;
+            //return false;
         }
         if (!w2utils.isAlphaNumeric(params.name)) {
             console.log('ERROR: The parameter "name" has to be alpha-numeric (a-z, 0-9, dash and underscore). ');

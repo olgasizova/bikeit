@@ -10,12 +10,12 @@ function doOnLoad() {
     $('#layout').w2layout({
         name: 'layout',
         panels: [
-            { type: 'top', size: 100, resizable: false, hidden: false, content: 'top' },
-            { type: 'left', size: 200, resizable: true, hidden: true, content: 'left' },
-            { type: 'main', content: 'main' },
-            { type: 'preview', size: '50%', resizable: true, hidden: true, content: 'preview' },
-            { type: 'right', size: 200, resizable: true, hidden: true, content: 'right' },
-            { type: 'bottom', size: 50, resizable: false, hidden: false, content: 'bottom' }
+            { type: 'top', size: 100, resizable: false, hidden: false, content: '' },
+            { type: 'left', size: 200, resizable: true, hidden: true, content: '' },
+            { type: 'main', content: '' },
+            { type: 'preview', size: '50%', resizable: true, hidden: true, content: '' },
+            { type: 'right', size: 200, resizable: true, hidden: true, content: '' },
+            { type: 'bottom', size: 50, resizable: false, hidden: false, content: '' }
         ]
     });
 
@@ -70,7 +70,7 @@ function initLogin() {
         $('#form-login').fadeIn(1000);
 
 
-    }, 1000);
+    }, 100);
 
 }
 
