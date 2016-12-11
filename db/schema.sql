@@ -21,7 +21,7 @@ create table trip(
   ,meet_time time
 );
 
--- team table to join a group
+-- team table to join a group, each time a person join a group, their person id is added to this table
 create table team(
   trip_id int references trip(id)
   ,person_id int references person(id)
