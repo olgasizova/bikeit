@@ -17,7 +17,6 @@ html,body {
 
 #form-login{
     position:absolute;
-    width:400px;
     margin:auto;
     margin-top:15%;
     margin-left: 35%;
@@ -126,6 +125,19 @@ position: absolute;
 background-color: #41A07D;
 }
 
+.w2ui-form {
+    border-radius: 0px;
+    margin-right: 70px;
+}
+
+.w2ui-field > div {
+    margin-left: 90px;
+
+}
+
+
+
+
 /*form button styles go here*/
 
 
@@ -149,15 +161,17 @@ background-color: #41A07D;
 
 #form-signup{
     position:absolute;
-    width:400px;
+    width:500px;
     margin:auto;
-    left:32%;
+    left:35%;
     margin-top:5%;
     display:none;
+    height: 500px;
 }
 
 
 #image-upload{
+    border-radius: 50%;
     height:140px;
     width:140px;
     margin-left:auto;
@@ -169,6 +183,22 @@ background-color: #41A07D;
     background-repeat:no-repeat;
     background-position:center;
 }
+
+
+button.w2ui-btn {
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    border: none;
+    border-radius: 0px;
+    outline: none;
+    font-size: 19px;
+    padding-left: 15px;
+    background-image: none;
+    background-color: #004F3F;
+    color: white;
+}
+
 
 
 
