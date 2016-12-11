@@ -60,6 +60,7 @@ function initLogin() {
                         return;
                     this.request(function (data) {
                         console.log(data);
+
                     }
                   );
                 }
@@ -111,5 +112,42 @@ function initSignUp() {
         $('#form-signup').fadeIn(1000);
 
     }, 100);
+}
+
+function showDashboard(){
+  w2Layout.load('main', 'html/part_dashboard.html', '', initDashboard);
+}
+
+function initDashboard() {
+
+    window.setTimeout(function () {
+
+        var $frm = $('#form-dashboard').w2form({
+            name: 'form-dashboard',
+            //recid: window.user.id,
+            url: '/public/mocks/login-success.json',
+            fields: [
+                { field: 'country', type: 'text', required: false },
+                { field: 'city', type: 'text', required: false },
+                { field: 'start_addr', type: 'text', required: false },
+                { field: 'end_addr', type: 'text', required: false },
+                { field: 'meet_date', type: 'date', required: false },
+                { field: 'meet_time', type: 'time', required: false }
+
+            ],
+
+            actions: {
+                join: function (target, data) {
+                    // showSignUp();
+                }
+            }
+
+        });
+
+        $('#form-login').fadeIn(1000);
+
+
+    }, 100);
+
 }
 

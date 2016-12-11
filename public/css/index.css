@@ -83,6 +83,23 @@ position: absolute;
 
 }
 
+#dashboard-button {
+    position: absolute;
+    top: 20px;
+    right: 270px;
+    /*button style goes here*/
+    background-color: white;
+    border: black solid 3px;
+    color: black;
+    padding: 15px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    outline: none;
+
+}
+
 /*main landing page content styles*/
 .background-image-container {
     width: 100%;
@@ -219,6 +236,22 @@ button.w2ui-btn:hover {
 
 .w2ui-buttons {
     box-shadow: none;
+}
+
+/*dashboard styles go here*/
+
+.dashboard-main-container {
+width: 600px;
+height: 500px;
+background-color: pink;
+}
+
+
+.main-profile-photo {
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+
 }
 
 
