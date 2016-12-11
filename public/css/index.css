@@ -172,16 +172,18 @@ background-color: #41A07D;
 
 #image-upload{
     border-radius: 50%;
-    height:140px;
-    width:140px;
+    height:120px;
+    width:120px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:5px;
     border:1px solid lightgrey;
-    background-image:url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1480826700/sdlc_preset/BlankUserIcon.jpg);
+    background-image:url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1481396362/picture-icon_uvdswy.png);
     background-size:contain;
     background-repeat:no-repeat;
     background-position:center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 
@@ -197,6 +199,26 @@ button.w2ui-btn {
     background-image: none;
     background-color: #004F3F;
     color: white;
+    box-shadow: none;
+}
+
+button.w2ui-btn:hover {
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    border: none;
+    border-radius: 0px;
+    outline: none;
+    font-size: 19px;
+    padding-left: 15px;
+    background-image: none;
+    background-color: #0A3530;
+    color: white;
+    box-shadow: none;
+}
+
+.w2ui-buttons {
+    box-shadow: none;
 }
 
 
