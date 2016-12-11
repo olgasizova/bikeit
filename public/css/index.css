@@ -20,8 +20,20 @@ html,body {
     width:400px;
     margin:auto;
     margin-top:15%;
-    margin-left: 40%;
+    margin-left: 35%;
     display:none;
+    height: 400px;
+    width: 500px;
+}
+
+
+.form-spacer {
+    height: 50px;
+
+}
+
+.w2ui-form {
+    border: none;
 }
 
 div.header{
@@ -68,6 +80,7 @@ position: absolute;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
+    outline: none;
 
 }
 
@@ -107,6 +120,15 @@ position: absolute;
     font-family: 'Open Sans', sans-serif;
     text-align: center;
 }
+
+/*form styles go here*/
+.w2ui-form-box {
+background-color: #41A07D;
+}
+
+/*form button styles go here*/
+
+
 /*footer styles */
 
 .footer-container {
