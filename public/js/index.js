@@ -19,7 +19,7 @@ function doOnLoad() {
         ]
     });
 
-    var w2Layout = w2ui['layout'];
+    window.w2Layout = w2ui['layout'];
 
     w2Layout.load('top', 'html/part_header.html');
     w2Layout.load('main', 'html/part_landing_main.html');
@@ -32,13 +32,17 @@ function doOnLoad() {
     }
 }
 
+
+
 function showLogin() {
+    w2Layout.load('main', 'html/part_login.html', '', initLogin);
+}
 
-    var w2Layout = w2ui['layout'];
+function initLogin() {
 
-    w2Layout.load('main', 'html/part_login.html', '', function () {
+    window.setTimeout(function () {
 
-        var $frmLogin = $('#form-login').w2form({
+        var $frm = $('#form-login').w2form({
             name: 'form-login',
             //recid: window.user.id,
             url: '/public/mocks/login-success.json',
@@ -48,13 +52,52 @@ function showLogin() {
             ],
 
             actions: {
-                reset: function (target,data) {
-                    this.clear();
+                signup: function (target, data) {
+                    showSignUp();
                 },
-                save: function (target, data) {
-                    if(this.validate())
-                      return;
+                login: function (target, data) {
+                    if (this.validate())
+                        return;
+                    this.request(function (data) {
+                        console.log(data);
+                    }
+                  );
+                }
+            }
 
+        });
+
+        $('#form-login').fadeIn(1000);
+
+
+    }, 1000);
+
+}
+
+
+function showSignUp() {
+    w2Layout.load('main', 'html/part_signup.html', '', initSignUp);
+}
+
+function initSignUp() {
+
+    window.setTimeout(function () {
+
+        var $frm = $('#form-signup').w2form({
+            name: 'form-signup',
+            //recid: window.user.id,
+            url: '/public/mocks/login-success.json',
+            fields: [
+                { field: 'email', type: 'email', required: true },
+                { field: 'pwd', type: 'password', required: true },
+                { field: 'fname', type: 'text', required: true },
+                { field: 'lname', type: 'text', required: true }
+             ],
+
+            actions: {
+                save: function (target, data) {
+                    if (this.validate())
+                        return;
                     this.request(function (data) {
                         console.log(data);
                     });
@@ -63,13 +106,10 @@ function showLogin() {
 
         });
 
-        $('#form-login').fadeIn(1000);
-    });
+        initImageUpload();
 
+        $('#form-signup').fadeIn(1000);
 
-
-
-
-
+    }, 100);
 }
 
