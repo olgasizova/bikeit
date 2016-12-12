@@ -47,12 +47,12 @@ module.exports = {
       return false;
   },
 
-//update person fields
-  // email VARCHAR(50),
-  // pwd VARCHAR(10),
-  // lname VARCHAR(50),
-  // fname VARCHAR(50),
-  // imgurl TEXT
+// //update person fields
+//   // email VARCHAR(50),
+//   // pwd VARCHAR(10),
+//   // lname VARCHAR(50),
+//   // fname VARCHAR(50),
+//   // imgurl TEXT
 
   updatePerson(req, res, next) {
     let filter = " where id = " + req.params.id;
@@ -106,6 +106,7 @@ module.exports = {
       return false;
 
   }
+};
 
 
 
