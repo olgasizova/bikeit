@@ -105,74 +105,13 @@ module.exports = {
       .catch(error => next(error));
       return false;
 
-  },
+  };
 
 
 
 
 
 
-// team model
 
-getTeam(req, res, next){
-
-    let filter = '';
-    if(req.params.id){
-      filter = 'where id =' + req.params.id;
-    }
-
-    db.query('SELECT * FROM bikeit' + filter)
-      .then((arrRecords) => {
-        res.returnRecords = arrRecords;
-        next();
-      })
-      .catch(error => next(error));
-      return false;
-  },
-
-  updateTeam(req, res, next) {
-    let filter = "where id = " + req.params.id;
-    let notes = req.params.notes;
-
-    db.query("UPDATE bikeit SET notes = '" + notes + "'" + filter)
-    .then((arrRecords) => {
-      res.returnRecords = arrRecords;
-      next();
-    })
-    .catch(error => next));
-    return false;
-  },
-
-  deleteTeam(req, res, next) {
-
-    let filter = " where id = " + req.params.id;
-    let notes = req.params.notes;
-
-    db.query("DELETE FROM bikeit" + filter)
-    .then((arrRecords) => {
-      res.returnRecords = arrRecords;
-      next();
-    })
-    .catch(error => next(error));
-    return false;
-  },
-
-  insertTeam(req, res, next) {
-
-    let fields = " (trip_id, person_id)";
-    let values = " ('" + req.params.trip_id
-                 + "', '" + req.params.person_id
-                 + "')"
-
-    db.query("INSERT INTO bikeit" + fields + "VALUES" + values)
-      .then((arrRecords) => {
-        res.returnRecords = arrRecords;
-        next();
-      })
-      .catch(error => next(error));
-      return false;
-
-  }
-};
 
 

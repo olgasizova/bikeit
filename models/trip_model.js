@@ -36,7 +36,7 @@ module.exports = {
       return false;
   },
 
-// clean up update trip
+// clean up update
   updateTrip(req, res, next) {
     let filter = "where id = " + req.params.id;
     let notes = req.params.notes;
