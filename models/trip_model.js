@@ -37,11 +37,28 @@ module.exports = {
   },
 
 // clean up update
-  updateTrip(req, res, next) {
-    let filter = "where id = " + req.params.id;
-    let notes = req.params.notes;
+// CREATE TABLE trip(
+//   id SERIAL PRIMARY KEY,
+//   leader_id INT REFERENCES person(id),
+//   country VARCHAR(50),
+//   city VARCHAR(50),
+//   start_addr TEXT,
+//   end_addr TEXT,
+//   meet_date DATE,
+//   meet_time TIME,
 
-    db.query("UPDATE bikeit SET notes = '" + notes + "'" + filter)
+  updateTrip(req, res, next) {
+    let filter = " where id = " + req.params.id;
+    let updtSql = "UPDATE trip SET country = '" + req.params.country + "', "
+    updtSql += "city = '" + req.params.city + "', ";
+    updtSql += "start_addr = '" + req.params.start_addr + "', ";
+    updtSql += "end_addr = '" + req.params.end_addr + "', ";
+    updtSql += "meet_date = '" + req.params.meet_date + "', ";
+    updtSql += "meet_time = '" + req.params.meet_time + "', ";
+    updtSql += filter;
+
+
+    db.query(updtSql)
     .then((arrRecords) => {
       res.returnRecords = arrRecords;
       next();
