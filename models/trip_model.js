@@ -47,6 +47,8 @@ module.exports = {
 //   meet_date DATE,
 //   meet_time TIME,
 
+//check this one
+
   updateTrip(req, res, next) {
     let filter = " where id = " + req.params.id;
     let updtSql = "UPDATE trip SET country = '" + req.params.country + "', "

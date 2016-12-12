@@ -69,7 +69,7 @@ module.exports = {
       res.returnRecords = arrRecords;
       next();
     })
-    .catch(error => next));
+    .catch(error => next(error));
     return false;
   },
 
@@ -105,7 +105,7 @@ module.exports = {
       .catch(error => next(error));
       return false;
 
-  };
+  }
 
 
 
