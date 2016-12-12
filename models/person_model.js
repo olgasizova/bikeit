@@ -14,15 +14,15 @@ const db = pg(config);
 module.exports = {
 
 // person model
-
-  getPerson(req, res, next){
+//initial sign in request
+ getPersonByEmail(req, res, next){
 
     let filter = '';
     if(req.params.id){
-      filter = 'where id =' + req.params.id;
+      filter = " where email = '" + req.params.email + "'";
     }
 
-    db.query('SELECT * FROM bikeit' + filter)
+    db.query('SELECT * FROM person' + filter)
       .then((arrRecords) => {
         res.returnRecords = arrRecords;
         next();
@@ -31,11 +31,45 @@ module.exports = {
       return false;
   },
 
-  updatePerson(req, res, next) {
-    let filter = "where id = " + req.params.id;
-    let notes = req.params.notes;
+  getPersonById(req, res, next){
 
-    db.query("UPDATE bikeit SET notes = '" + notes + "'" + filter)
+    let filter = '';
+    if(req.params.id){
+      filter = ' where id = ' + req.params.id;
+    }
+
+    db.query('SELECT * FROM person' + filter)
+      .then((arrRecords) => {
+        res.returnRecords = arrRecords;
+        next();
+      })
+      .catch(error => next(error));
+      return false;
+  },
+
+//update person fields
+  // email VARCHAR(50),
+  // pwd VARCHAR(10),
+  // lname VARCHAR(50),
+  // fname VARCHAR(50),
+  // imgurl TEXT
+
+  updatePerson(req, res, next) {
+    let filter = " where id = " + req.params.id;
+    let email = req.params.email;
+    let pwd = req.params.pwd;
+    let lname = req.params.lname;
+    let fname = req.params.fname;
+    let imgurl = req.params.imgurl;
+
+    let updSql = "UPDATE person SET email = '" + email + "', "
+    updSql += "pwd = '" + pwd + "', ";
+    updSql += "lname = '" + lname + "', ";
+    updSql += "fname = '" + fname + "', ";
+    updSql += "imgurl = '" + imgurl + "' ";
+    updSql += filter;
+
+    db.query(updSql)
     .then((arrRecords) => {
       res.returnRecords = arrRecords;
       next();
@@ -49,7 +83,7 @@ module.exports = {
     let filter = " where id = " + req.params.id;
     let notes = req.params.notes;
 
-    db.query("DELETE FROM bikeit" + filter)
+    db.query("DELETE FROM person" + filter)
     .then((arrRecords) => {
       res.returnRecords = arrRecords;
       next();
@@ -60,15 +94,15 @@ module.exports = {
 
   insertPerson(req, res, next) {
 
-    let fields = " (email, pwd, lname, fname, imgurl)";
+    let fields = " (email, pwd, lname, fname, imgurl) ";
     let values = " ('" + req.params.email
                  + "', '" + req.params.pwd
                  + "', '" + req.params.lname
                  + "', '" + req.params.fname
                  + "', '" + req.params.imgurl
-                 + "')"
+                 + "') "
 
-    db.query("INSERT INTO bikeit" + fields + "VALUES" + values)
+    db.query("INSERT INTO person" + fields + "VALUES" + values)
       .then((arrRecords) => {
         res.returnRecords = arrRecords;
         next();
