@@ -1,28 +1,28 @@
 -- person table for signing up
 
-create table person(
-  id serial primary key
-  ,email varchar(50)
-  ,pwd varchar(10)
-  ,lname varchar(50)
-  ,fname varchar(50)
-  ,imgurl text
+CREATE TABLE person(
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(50),
+  pwd VARCHAR(10),
+  lname VARCHAR(50),
+  fname VARCHAR(50),
+  imgurl TEXT
 );
 
 -- trip table to save trips
-create table trip(
-  id serial primary key
-  ,leader_id int references person(id)
-  ,country varchar(50)
-  ,city varchar(50)
-  ,start_addr text
-  ,end_addr text
-  ,meet_date date
-  ,meet_time time
+CREATE TABLE trip(
+  id SERIAL PRIMARY KEY,
+  leader_id INT REFERENCES person(id),
+  country VARCHAR(50),
+  city VARCHAR(50),
+  start_addr TEXT,
+  end_addr TEXT,
+  meet_date DATE,
+  meet_time TIME,
 );
 
 -- team table to join a group, each time a person join a group, their person id is added to this table
-create table team(
-  trip_id int references trip(id)
-  ,person_id int references person(id)
-)
+CREATE TABLE team(
+  trip_id INT REFERENCES trip(id),
+  person_id INT REFERENCES person(id)
+);
