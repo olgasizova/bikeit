@@ -56,17 +56,12 @@ module.exports = {
 
   updatePerson(req, res, next) {
     let filter = " where id = " + req.params.id;
-    let email = req.params.email;
-    let pwd = req.params.pwd;
-    let lname = req.params.lname;
-    let fname = req.params.fname;
-    let imgurl = req.params.imgurl;
 
-    let updSql = "UPDATE person SET email = '" + email + "', "
-    updSql += "pwd = '" + pwd + "', ";
-    updSql += "lname = '" + lname + "', ";
-    updSql += "fname = '" + fname + "', ";
-    updSql += "imgurl = '" + imgurl + "' ";
+    let updSql = "UPDATE person SET email = '" + req.params.email + "', "
+    updSql += "pwd = '" + req.params.pwd + "', ";
+    updSql += "lname = '" + req.params.lname + "', ";
+    updSql += "fname = '" + req.params.fname + "', ";
+    updSql += "imgurl = '" + req.params.imgurl + "' ";
     updSql += filter;
 
     db.query(updSql)
@@ -112,73 +107,6 @@ module.exports = {
 
   },
 
-// trip model
-
-
-  getTrip(req, res, next){
-
-    let filter = '';
-    if(req.params.id){
-      filter = 'where id =' + req.params.id;
-    }
-
-    db.query('SELECT * FROM bikeit' + filter)
-      .then((arrRecords) => {
-        res.returnRecords = arrRecords;
-        next();
-      })
-      .catch(error => next(error));
-      return false;
-  },
-
-  updateTrip(req, res, next) {
-    let filter = "where id = " + req.params.id;
-    let notes = req.params.notes;
-
-    db.query("UPDATE bikeit SET notes = '" + notes + "'" + filter)
-    .then((arrRecords) => {
-      res.returnRecords = arrRecords;
-      next();
-    })
-    .catch(error => next));
-    return false;
-  },
-
-  deleteTrip(req, res, next) {
-
-    let filter = " where id = " + req.params.id;
-    let notes = req.params.notes;
-
-    db.query("DELETE FROM bikeit" + filter)
-    .then((arrRecords) => {
-      res.returnRecords = arrRecords;
-      next();
-    })
-    .catch(error => next(error));
-    return false;
-  },
-
-  insertTrip(req, res, next) {
-
-    let fields = " (country, city, start_addr, end_addr, meet_date, meet_time)";
-    let values = " ('" + req.params.country
-                 + "', '" + req.params.city
-                 + "', '" + req.params.start_addr
-                 + "', '" + req.params.end_addr
-                 + "', '" + req.params.meet_date
-                 + "', '" + req.params.meet_time
-                 + "')"
-
-    db.query("INSERT INTO bikeit" + fields + "VALUES" + values)
-      .then((arrRecords) => {
-        res.returnRecords = arrRecords;
-        next();
-      })
-      .catch(error => next(error));
-      return false;
-
-  }
-},
 
 
 
