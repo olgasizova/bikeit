@@ -1,5 +1,6 @@
 <div class="dashboard-main-container">
     <div class="main-profile-photo" id="img-profile">
+    <p class="leader-name">Leader Name</p>
     </div>
 
 
@@ -45,37 +46,19 @@
 </div>
 
 <div class="team-members-container flex-container">
-    <div class="team-member flex-item"></div>
-    <div class="team-member flex-item"></div>
-    <div class="team-member flex-item"></div>
-    <div class="team-member flex-item"></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
+    <div class="team-member flex-item"><p class="member-name">Name</p></div>
 
 </div>
-
-<!-- scroll magic  -->
-
-<div class="spacer s2"></div>
-<div id="trigger" class="spacer s0"></div>
-<div id="target" class="box2 blue">
-  <p>Widen the horizon.</p>
-  <a href="#" class="viewsource">view source</a>
-</div>
-<div class="spacer s2"></div>
-<script>
-  // init controller
-  var controller = new ScrollMagic.Controller({vertical: false});
-
-  // build tween
-  var tween = TweenMax.to("#target", 0.5, {backgroundColor: "green", width: "+=400"});
-
-  // build scene
-  var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 500})
-          .setTween(tween)
-          .addIndicators() // add indicators (requires plugin)
-          .addTo(controller);
-</script>
-
-
-
-
+<iframe class="map" src="html/mapbox.html"></iframe>
 
