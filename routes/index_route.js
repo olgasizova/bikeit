@@ -1,6 +1,7 @@
 'use strict'
 const Router = require('express').Router();
 const person = require('../models/person_model');
+const trip = require('../models/trip_model');
 
 
 
@@ -25,10 +26,15 @@ Router.route('/getuser')
 // to get person by email
   .post(person.getPersonByEmail, sendJSONresp);
 
-// to process the sign-in page
-Router.route('/signin')
+// to process the sign-up page
+Router.route('/signup')
 // insert new person and return him or her back by using getPersonById
   .post(person.addPerson, person.getPersonById, sendJSONresp);
+
+//add trip
+Router.route('/addtrip')
+
+  .post(trip.addTrip, trip.getTrips, sendJSONresp);
 
 
 module.exports = Router;

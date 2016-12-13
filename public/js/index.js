@@ -4,7 +4,14 @@ $(document).ready(doOnLoad);
 
 function doOnLoad() {
 
-    window.user = {}
+    window.user = {
+        id:0,
+        lname:'',
+        fname:'',
+        pwd:'',
+        email:'',
+        imgurl:'url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1481396362/picture-icon_uvdswy.png)'
+    }
 
     //here is a layout as per w2ui framework credit W2ui.com
     $('#layout').w2layout({
@@ -26,19 +33,21 @@ function doOnLoad() {
     w2Layout.load('bottom', 'html/part_footer.html');
 
 
+    setUser(window.user);
 
-    if (!window.user.id) {
-        //showLogin();
-    }
 }
 
 function setUser(loginUser){
     window.user = loginUser;
-    var imgurl = 'url(' + window.user.imgurl +')';
+    //var imgurl = 'url(' + window.user.imgurl +')';
+    var imgurl = window.user.imgurl;
     $('div.profile-circle-photo').css('background-image',imgurl);
-    showDashboard();
-    w2Layout.show('left');
-    w2Layout.show('right');
+    
+    if (window.user.id) { 
+        showDashboard();
+        w2Layout.show('left');
+        w2Layout.show('right');
+    }
 
 }
 
@@ -49,8 +58,6 @@ function showLogin() {
 }
 
 function initLogin() {
-
-    window.setTimeout(function () {
 
 // partial credit to W2ui.com for form definition
         var $frm = $('#form-login').w2form({
@@ -70,7 +77,6 @@ function initLogin() {
                     this.save(data,function(res) {
                         setUser(res[0]);
                     }
-
                   );
                 }
             }
@@ -80,8 +86,6 @@ function initLogin() {
         $('#form-login').fadeIn(1000);
 
 
-    }, 100);
-
 }
 
 
@@ -90,14 +94,14 @@ function showSignUp() {
 }
 
 function initSignUp() {
+        window.setTimeout(function(){
 
-    window.setTimeout(function () {
 
 //partial credit to W2ui.com for form definition
         var $frm = $('#form-signup').w2form({
             name: 'form-signup',
             //recid: window.user.id,
-            url: '/public/mocks/login-success.json',
+            url: '/signup',
             fields: [
                 { field: 'email', type: 'email', required: true },
                 { field: 'pwd', type: 'password', required: true },
@@ -107,14 +111,13 @@ function initSignUp() {
 
             actions: {
                 save: function (target, data) {
-                    if (this.validate())
-                        return;
-                    this.request(function (data) {
-                        console.log(data);
-                    })
-
+                    var imgurl = window.user.imgurl;
+                    var addData = {'imgurl':imgurl};
+                    this.save(addData,function(res) {
+                        
+                        setUser(res[0]);
+                    });
                 }
-
             }
 
         });
@@ -122,8 +125,9 @@ function initSignUp() {
         initImageUpload();
 
         $('#form-signup').fadeIn(1000);
+        
+    },100)
 
-    }, 100);
 }
 
 function showDashboard(){
@@ -132,19 +136,19 @@ function showDashboard(){
 
 function initDashboard() {
 
-    window.setTimeout(function () {
+
 //partial credit to W2ui.com for form definition
         var $frm = $('#form-dashboard').w2form({
             name: 'form-dashboard',
             //recid: window.user.id,
-            url: '/public/mocks/login-success.json',
+            url: '/addtrip',
             fields: [
                 { field: 'country', type: 'text', required: false },
                 { field: 'city', type: 'text', required: false },
-                { field: 'start_addr', type: 'text', required: false },
-                { field: 'end_addr', type: 'text', required: false },
-                { field: 'meet_date', type: 'date', required: false },
-                { field: 'meet_time', type: 'time', required: false }
+                { field: 'start_addr', type: 'text', required: true },
+                { field: 'end_addr', type: 'text', required: true },
+                { field: 'meet_date', type: 'date', required: true },
+                { field: 'meet_time', type: 'time', required: true }
 
             ],
 
@@ -159,7 +163,7 @@ function initDashboard() {
         $('#form-login').fadeIn(1000);
 
 
-    }, 100);
+
 
 }
 

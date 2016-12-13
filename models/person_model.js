@@ -18,6 +18,7 @@ const db = pg(config);
 const getReqRecord = function(req){
     try{
       let reqJson = JSON.parse(req.body.request);
+      reqJson.record.imgurl = reqJson.imgurl;
       return reqJson.record;
     }catch(error){;
       return {};
