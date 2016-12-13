@@ -27,7 +27,7 @@ Router.route('/getuser')
 
 // to process the sign-in page
 Router.route('/signin')
-// to get person by email
+// insert new person and return him or her back by using getPersonById
   .post(person.addPerson, person.getPersonById, sendJSONresp);
 
 

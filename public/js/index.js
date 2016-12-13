@@ -6,7 +6,7 @@ function doOnLoad() {
 
     window.user = {}
 
-    //here is a layout as per w2ui framework
+    //here is a layout as per w2ui framework credit W2ui.com
     $('#layout').w2layout({
         name: 'layout',
         panels: [
@@ -52,6 +52,7 @@ function initLogin() {
 
     window.setTimeout(function () {
 
+// partial credit to W2ui.com for form definition
         var $frm = $('#form-login').w2form({
             name: 'form-login',
             //recid: window.user.id,
@@ -92,6 +93,7 @@ function initSignUp() {
 
     window.setTimeout(function () {
 
+//partial credit to W2ui.com for form definition
         var $frm = $('#form-signup').w2form({
             name: 'form-signup',
             //recid: window.user.id,
@@ -110,9 +112,9 @@ function initSignUp() {
                     this.request(function (data) {
                         console.log(data);
                     })
-                    
+
                 }
-                
+
             }
 
         });
@@ -131,7 +133,7 @@ function showDashboard(){
 function initDashboard() {
 
     window.setTimeout(function () {
-
+//partial credit to W2ui.com for form definition
         var $frm = $('#form-dashboard').w2form({
             name: 'form-dashboard',
             //recid: window.user.id,

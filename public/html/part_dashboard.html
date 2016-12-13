@@ -3,7 +3,8 @@
     </div>
 
 
-        <div id="form-dashboard">
+
+<div id="form-dashboard">
     <div class="w2ui-page page-0">
 
         <div id="form-dashboard"></div>
@@ -15,7 +16,7 @@
         </div>
         <div class="w2ui-field">
             <div>
-                <input name="city" type="City" placeholder="Password" style="width: 300px; height: 50px; margin: auto; border: none; border-radius: 0px; outline: none; font-size: 19px; padding-left: 15px; margin-right: 20px" />
+                <input name="city" type="City" placeholder="City" style="width: 300px; height: 50px; margin: auto; border: none; border-radius: 0px; outline: none; font-size: 19px; padding-left: 15px; margin-right: 20px" />
             </div>
         </div>
         <div class="w2ui-field">
@@ -40,10 +41,41 @@
         </div>
 
     </div>
+<button id="join-button" type="button">Join</button>
+</div>
 
-
-
-
-
+<div class="team-members-container flex-container">
+    <div class="team-member flex-item"></div>
+    <div class="team-member flex-item"></div>
+    <div class="team-member flex-item"></div>
+    <div class="team-member flex-item"></div>
 
 </div>
+
+<!-- scroll magic  -->
+
+<div class="spacer s2"></div>
+<div id="trigger" class="spacer s0"></div>
+<div id="target" class="box2 blue">
+  <p>Widen the horizon.</p>
+  <a href="#" class="viewsource">view source</a>
+</div>
+<div class="spacer s2"></div>
+<script>
+  // init controller
+  var controller = new ScrollMagic.Controller({vertical: false});
+
+  // build tween
+  var tween = TweenMax.to("#target", 0.5, {backgroundColor: "green", width: "+=400"});
+
+  // build scene
+  var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 500})
+          .setTween(tween)
+          .addIndicators() // add indicators (requires plugin)
+          .addTo(controller);
+</script>
+
+
+
+
+

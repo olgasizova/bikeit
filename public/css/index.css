@@ -240,20 +240,78 @@ button.w2ui-btn:hover {
 
 /*dashboard styles go here*/
 
+/*flexbox*/
+
 .dashboard-main-container {
-width: 600px;
-height: 500px;
-background-color: pink;
+width: 800px;
+/*height: 500px;*/
+/*background-color: pink;*/
+margin: auto;
+background-color:  #41A07D;
 }
 
 
 .main-profile-photo {
-    height: 100px;
-    width: 100px;
-    background-color: yellow;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    border: 3px solid black;
+    margin: auto;
 
 }
 
 
+/*background*/
 
+
+/*.dash-form {
+  width: 700px;
+  margin-left: 200px;
+}*/
+
+/*#form-dashboard {
+  width: 400px;
+}*/
+
+/*.w2ui-form-box {
+  margin: auto;
+  width: 600px;
+}*/
+
+#join-button {
+    position: absolute;
+    top: 300px;
+    right: 10px;
+    /*button style goes here*/
+    background-color: white;
+    border: black solid 3px;
+    color: black;
+    padding: 15px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    outline: none;
+
+}
+
+.team-members-container {
+  width: 800px;
+  height: 200px;
+  background-color:white;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-item {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: yellow;
+}
 

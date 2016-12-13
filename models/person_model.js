@@ -12,11 +12,14 @@ const config = {
 
 const db = pg(config);
 
+// W2ui framework is not restful and only makes POST to the server
+// Also it wraps all form input values into "body.request" object
+// credit for getReqRecord function to extract JSON from req.body goes to Vlad Chernya
 const getReqRecord = function(req){
     try{
       let reqJson = JSON.parse(req.body.request);
       return reqJson.record;
-    }catch(error){; 
+    }catch(error){;
       return {};
     }
 }
@@ -28,11 +31,11 @@ module.exports = {
  getPersonByEmail(req, res, next){
     let reqRecord = getReqRecord(req);
     let filter = '';
-    
+
     if(reqRecord.email){
       filter = " where email = '" + reqRecord.email + "'";
     }
- 
+
     db.query('SELECT * FROM person' + filter)
       .then((arrRecords) => {
         res.returnRecords = arrRecords;
@@ -50,7 +53,7 @@ module.exports = {
     let reqRecord = getReqRecord(req);
 
     let filter = '';
-    var person_id = reqRecord.id || req.person_id; 
+    var person_id = reqRecord.id || req.person_id;
     if(person_id){
       filter = ' where id = ' + person_id;
     }
@@ -58,7 +61,7 @@ module.exports = {
     db.query('SELECT * FROM person' + filter)
       .then((arrRecords) => {
         res.returnRecords = arrRecords;
-        
+
         if (!arrRecords.length){
           res.returnRecords={"status": "error", "message": "Oops: not found, looks like a code error."};
         }
@@ -78,7 +81,7 @@ module.exports = {
 
   updatePerson(req, res, next) {
     let reqRecord = getReqRecord(req);
-    
+
     let filter = " where id = " + reqRecord.id;
 
     let updSql = "UPDATE person SET email = '" + reqRecord.email + "', "
@@ -122,6 +125,7 @@ module.exports = {
                  + "', '" + reqRecord.imgurl
                  + "') "
 
+// query inserts record and returns new record id
     db.query("INSERT INTO person" + fields + "VALUES" + values + 'RETURNING id')
       .then((arrRecords) => {
           req.person_id = arrRecords[0].id;
