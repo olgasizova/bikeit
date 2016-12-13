@@ -1,10 +1,7 @@
 'use strict'
 const Router = require('express').Router();
-const {getPersonByEmail} = require('../models/person_model');
-const {getPersonById} = require('../models/person_model');
-const {updatePerson} = require('../models/person_model');
-const {deletePerson} = require('../models/person_model');
-const {insertPerson} = require('../models/person_model');
+const person = require('../models/person_model');
+
 
 
 const bodyParser = require('body-parser');
@@ -15,6 +12,7 @@ Router.use(bodyParser.json());
 // for parsing application/x-www-form-urlencoded
 Router.use(bodyParser.urlencoded({ extended: true }));
 
+const sendJSONresp = (req, res) => res.json(res.returnRecords);
 
 // to show the landing page
 Router.get('/', (req, res) => {
@@ -22,11 +20,15 @@ Router.get('/', (req, res) => {
 
 });
 
-// to show sign up page
-// Router.get('/part_login', (req, res) => {
-//   res.render('part_login')
-// });
+// to process the login page
+Router.route('/getuser')
+// to get person by email
+  .post(person.getPersonByEmail, sendJSONresp);
 
+// to process the sign-in page
+Router.route('/signin')
+// to get person by email
+  .post(person.addPerson, person.getPersonById, sendJSONresp);
 
 
 module.exports = Router;

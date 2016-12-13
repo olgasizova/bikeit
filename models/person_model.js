@@ -1,4 +1,4 @@
-const pg = require('pg-promise');
+const pg = require('pg-promise')({/*config*/});
 
 const config = {
   host:      process.env.DB_HOST,
@@ -6,25 +6,40 @@ const config = {
   database:  process.env.DB_DATABASE,
   user:      process.env.DB_USER,
   password:  process.env.DB_PASSWORD,
+  ssl:       process.env.DB_SSL
 
 };
 
 const db = pg(config);
+
+const getReqRecord = function(req){
+    try{
+      let reqJson = JSON.parse(req.body.request);
+      return reqJson.record;
+    }catch(error){; 
+      return {};
+    }
+}
 
 module.exports = {
 
 // person model
 //initial sign in request
  getPersonByEmail(req, res, next){
-
+    let reqRecord = getReqRecord(req);
     let filter = '';
-    if(req.params.id){
-      filter = " where email = '" + req.params.email + "'";
+    
+    if(reqRecord.email){
+      filter = " where email = '" + reqRecord.email + "'";
     }
-
+ 
     db.query('SELECT * FROM person' + filter)
       .then((arrRecords) => {
         res.returnRecords = arrRecords;
+        if (!arrRecords.length){
+          res.returnRecords={"status": "error", "message": "Oops: not found, would you like to sign up?"};
+        }
+
         next();
       })
       .catch(error => next(error));
@@ -32,15 +47,22 @@ module.exports = {
   },
 
   getPersonById(req, res, next){
+    let reqRecord = getReqRecord(req);
 
     let filter = '';
-    if(req.params.id){
-      filter = ' where id = ' + req.params.id;
+    var person_id = reqRecord.id || req.person_id; 
+    if(person_id){
+      filter = ' where id = ' + person_id;
     }
 
     db.query('SELECT * FROM person' + filter)
       .then((arrRecords) => {
         res.returnRecords = arrRecords;
+        
+        if (!arrRecords.length){
+          res.returnRecords={"status": "error", "message": "Oops: not found, looks like a code error."};
+        }
+
         next();
       })
       .catch(error => next(error));
@@ -55,28 +77,30 @@ module.exports = {
 //   // imgurl TEXT
 
   updatePerson(req, res, next) {
-    let filter = " where id = " + req.params.id;
+    let reqRecord = getReqRecord(req);
+    
+    let filter = " where id = " + reqRecord.id;
 
-    let updSql = "UPDATE person SET email = '" + req.params.email + "', "
-    updSql += "pwd = '" + req.params.pwd + "', ";
-    updSql += "lname = '" + req.params.lname + "', ";
-    updSql += "fname = '" + req.params.fname + "', ";
-    updSql += "imgurl = '" + req.params.imgurl + "' ";
+    let updSql = "UPDATE person SET email = '" + reqRecord.email + "', "
+    updSql += "pwd = '" + reqRecord.pwd + "', ";
+    updSql += "lname = '" + reqRecord.lname + "', ";
+    updSql += "fname = '" + reqRecord.fname + "', ";
+    updSql += "imgurl = '" + reqRecord.imgurl + "' ";
     updSql += filter;
 
     db.query(updSql)
-    .then((arrRecords) => {
-      res.returnRecords = arrRecords;
-      next();
-    })
-    .catch(error => next(error));
-    return false;
+      .then((arrRecords) => {
+        res.returnRecords = arrRecords;
+        next();
+      })
+      .catch(error => next(error));
+      return false;
   },
 
   deletePerson(req, res, next) {
-
-    let filter = " where id = " + req.params.id;
-    let notes = req.params.notes;
+    let reqRecord = getReqRecord(req);
+    let filter = " where id = " + reqRecord.id;
+    let notes = reqRecord.notes;
 
     db.query("DELETE FROM person" + filter)
     .then((arrRecords) => {
@@ -87,20 +111,22 @@ module.exports = {
     return false;
   },
 
-  insertPerson(req, res, next) {
+  addPerson(req, res, next) {
+    let reqRecord = getReqRecord(req);
 
     let fields = " (email, pwd, lname, fname, imgurl) ";
-    let values = " ('" + req.params.email
-                 + "', '" + req.params.pwd
-                 + "', '" + req.params.lname
-                 + "', '" + req.params.fname
-                 + "', '" + req.params.imgurl
+    let values = " ('" + reqRecord.email
+                 + "', '" + reqRecord.pwd
+                 + "', '" + reqRecord.lname
+                 + "', '" + reqRecord.fname
+                 + "', '" + reqRecord.imgurl
                  + "') "
 
-    db.query("INSERT INTO person" + fields + "VALUES" + values)
+    db.query("INSERT INTO person" + fields + "VALUES" + values + 'RETURNING id')
       .then((arrRecords) => {
-        res.returnRecords = arrRecords;
-        next();
+          req.person_id = arrRecords[0].id;
+          res.returnRecords = arrRecords;
+          next();
       })
       .catch(error => next(error));
       return false;

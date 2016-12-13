@@ -18360,7 +18360,7 @@ var w2prompt = function (label, title, callBack) {
                         obj.trigger($.extend(edata, { phase: 'after' }));
                         obj.refresh();
                         // call back
-                        if (data.status == 'success' && typeof callBack == 'function') callBack(data);
+                        if (typeof callBack == 'function') callBack(data);
                     })
                     .fail(function (xhr, status, error) {
                         // trigger event

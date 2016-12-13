@@ -4,17 +4,17 @@ $(document).ready(doOnLoad);
 
 function doOnLoad() {
 
-    window.user = { id: ''}
+    window.user = {}
 
-
+    //here is a layout as per w2ui framework
     $('#layout').w2layout({
         name: 'layout',
         panels: [
             { type: 'top', size: 100, resizable: false, hidden: false, content: '' },
-            { type: 'left', size: 200, resizable: true, hidden: true, content: '' },
+            { type: 'left', size: 300, resizable: true, hidden: true, content: '' },
             { type: 'main', content: '' },
             { type: 'preview', size: '50%', resizable: true, hidden: true, content: '' },
-            { type: 'right', size: 200, resizable: true, hidden: true, content: '' },
+            { type: 'right', size: 300, resizable: true, hidden: true, content: '' },
             { type: 'bottom', size: 50, resizable: false, hidden: false, content: '' }
         ]
     });
@@ -32,6 +32,16 @@ function doOnLoad() {
     }
 }
 
+function setUser(loginUser){
+    window.user = loginUser;
+    var imgurl = 'url(' + window.user.imgurl +')';
+    $('div.profile-circle-photo').css('background-image',imgurl);
+    showDashboard();
+    w2Layout.show('left');
+    w2Layout.show('right');
+
+}
+
 
 
 function showLogin() {
@@ -45,7 +55,7 @@ function initLogin() {
         var $frm = $('#form-login').w2form({
             name: 'form-login',
             //recid: window.user.id,
-            url: '/public/mocks/login-success.json',
+            url: '/getuser',
             fields: [
                 { field: 'email', type: 'email', required: true },
                 { field: 'pwd', type: 'password', required: true }
@@ -56,12 +66,10 @@ function initLogin() {
                     showSignUp();
                 },
                 login: function (target, data) {
-                    if (this.validate())
-                        return;
-                    this.request(function (data) {
-                        console.log(data);
-
+                    this.save(data,function(res) {
+                        setUser(res[0]);
                     }
+
                   );
                 }
             }
@@ -101,8 +109,10 @@ function initSignUp() {
                         return;
                     this.request(function (data) {
                         console.log(data);
-                    });
+                    })
+                    
                 }
+                
             }
 
         });
@@ -150,4 +160,5 @@ function initDashboard() {
     }, 100);
 
 }
+
 
