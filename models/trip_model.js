@@ -17,6 +17,7 @@ const db = pg(config);
 const getReqRecord = function(req){
     try{
       let reqJson = JSON.parse(req.body.request);
+      reqJson.record.leader_id = reqJson.id;
       return reqJson.record;
     }catch(error){; 
       return {};
@@ -29,7 +30,7 @@ module.exports = {
     let reqRecord = getReqRecord(req);
 
     let filter = '';
-    let trip_id = reqRecord.id || req.trip_id;
+    let trip_id = reqRecord.id || res.trip_id;
     if(trip_id){
       filter = ' where trip.id =' + trip_id;
     }

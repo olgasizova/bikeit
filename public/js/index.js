@@ -5,12 +5,12 @@ $(document).ready(doOnLoad);
 function doOnLoad() {
 
     window.user = {
-        id:0,
-        lname:'',
-        fname:'',
-        pwd:'',
-        email:'',
-        imgurl:'url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1481396362/picture-icon_uvdswy.png)'
+        id: 0,
+        lname: '',
+        fname: '',
+        pwd: '',
+        email: '',
+        imgurl: 'url(http://res.cloudinary.com/sdlc-consulting-inc/image/upload/v1481396362/picture-icon_uvdswy.png)'
     }
 
     //here is a layout as per w2ui framework credit W2ui.com
@@ -37,13 +37,13 @@ function doOnLoad() {
 
 }
 
-function setUser(loginUser){
+function setUser(loginUser) {
     window.user = loginUser;
     //var imgurl = 'url(' + window.user.imgurl +')';
     //var imgurl = window.user.imgurl;
-    $('div.profile-circle-photo').css('background-image',window.user.imgurl);
-    
-    if (window.user.id) { 
+    $('div.profile-circle-photo').css('background-image', window.user.imgurl);
+
+    if (window.user.id) {
         showDashboard();
         w2Layout.show('left');
         w2Layout.show('right');
@@ -59,31 +59,31 @@ function showLogin() {
 
 function initLogin() {
 
-// partial credit to W2ui.com for form definition
-        var $frm = $('#form-login').w2form({
-            name: 'form-login',
-            //recid: window.user.id,
-            url: '/getuser',
-            fields: [
-                { field: 'email', type: 'email', required: true },
-                { field: 'pwd', type: 'password', required: true }
-            ],
+    // partial credit to W2ui.com for form definition
+    var $frm = $('#form-login').w2form({
+        name: 'form-login',
+        //recid: window.user.id,
+        url: '/getuser',
+        fields: [
+            { field: 'email', type: 'email', required: true },
+            { field: 'pwd', type: 'password', required: true }
+        ],
 
-            actions: {
-                signup: function (target, data) {
-                    showSignUp();
-                },
-                login: function (target, data) {
-                    this.save(data,function(res) {
-                        setUser(res[0]);
-                    }
-                  );
+        actions: {
+            signup: function (target, data) {
+                showSignUp();
+            },
+            login: function (target, data) {
+                this.save(data, function (res) {
+                    setUser(res[0]);
                 }
+                );
             }
+        }
 
-        });
+    });
 
-        $('#form-login').fadeIn(1000);
+    $('#form-login').fadeIn(1000);
 
 
 }
@@ -94,10 +94,10 @@ function showSignUp() {
 }
 
 function initSignUp() {
-        window.setTimeout(function(){
+    window.setTimeout(function () {
 
 
-//partial credit to W2ui.com for form definition
+        //partial credit to W2ui.com for form definition
         var $frm = $('#form-signup').w2form({
             name: 'form-signup',
             //recid: window.user.id,
@@ -107,15 +107,15 @@ function initSignUp() {
                 { field: 'pwd', type: 'password', required: true },
                 { field: 'fname', type: 'text', required: true },
                 { field: 'lname', type: 'text', required: true }
-             ],
+            ],
 
             actions: {
                 save: function (target, data) {
                     let imgurl = $('#image-upload').css('background-image');
                     window.user.imgurl = imgurl;;
-                    let addData = {'imgurl':imgurl};
-                    this.save(addData,function(res) {
-                        
+                    let addData = { 'imgurl': imgurl };
+                    this.save(addData, function (res) {
+
                         setUser(res[0]);
                     });
                 }
@@ -126,53 +126,65 @@ function initSignUp() {
         initImageUpload();
 
         $('#form-signup').fadeIn(1000);
-        
-    },100)
+
+    }, 100)
 
 }
 
-function showDashboard(){
-  w2Layout.load('main', 'html/part_dashboard.html', '', initDashboard);
+function showDashboard() {
+    w2Layout.load('main', 'html/part_dashboard.html', '', initDashboard);
 }
 
 function initDashboard() {
 
 
-//partial credit to W2ui.com for form definition
-        var $frm = $('#form-dashboard').w2form({
-            name: 'form-dashboard',
-            //recid: window.user.id,
-            url: '/addtrip',
-            fields: [
-                { field: 'country', type: 'text', required: true },
-                { field: 'city', type: 'text', required: true },
-                { field: 'start_addr', type: 'text', required: true },
-                { field: 'end_addr', type: 'text', required: true },
-                { field: 'meet_date', type: 'date', required: true },
-                { field: 'meet_time', type: 'time', required: true }
+    //partial credit to W2ui.com for form definition
+    var $frm = $('#form-dashboard').w2form({
+        name: 'form-dashboard',
+        //recid: window.user.id,
+        url: '/addtrip',
+        fields: [
+            { field: 'country', type: 'text', required: true },
+            { field: 'city', type: 'text', required: true },
+            { field: 'start_addr', type: 'text', required: true },
+            { field: 'end_addr', type: 'text', required: true },
+            { field: 'meet_date', type: 'date', required: true },
+            { field: 'meet_time', type: 'time', required: true }
 
-            ],
+        ],
 
-            actions: {
-                //"newtrip" is a name of the button on the form
-                //will be executed on click 
-                newtrip: function (target, data) {
-                    $('#img-profile').css('background-image',window.user.imgurl);
-                    $('.leader-name').text(window.user.fname + ' ' + window.user.lname);
-                    $('.team-members-container').empty();
-                    $('#new-trip-button').hide();
+        actions: {
+            //"newtrip" is a name of the button on the form
+            //will be executed on click 
+            newtrip: function (target, data) {
+                $('#img-profile').css('background-image', window.user.imgurl);
+                $('.leader-name').text(window.user.fname + ' ' + window.user.lname);
+                $('.team-members-container').empty();
+                $('#new-trip-button').hide();
+                $('#join-trip-button').hide();
+                $('#save-trip-button').show();
+
+                let form = this;
+                form.record = {};
+                form.refresh();
+            },
+            savetrip: function (target, data) {
+                let form = this;
+                form.url = '/addtrip';
+                this.save(window.user, function (res) {
+                    $('#new-trip-button').show();
                     $('#join-trip-button').hide();
-                    $('#save-trip-button').show();
+                    $('#save-trip-button').hide();
 
-                    let form = this;
-                    form.record = {};
-                    form.refresh();
-                }
+
+                });
             }
 
-        });
+        }
 
-        $('#form-login').fadeIn(1000);
+    });
+
+    $('#form-login').fadeIn(1000);
 
 
 
