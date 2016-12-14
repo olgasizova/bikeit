@@ -35,6 +35,13 @@ function doOnLoad() {
 
     setUser(window.user);
 
+// on mouse down if user is not logged in, then show login form
+    $('.trip-action').mousedown(function(){
+        if(!window.user.id)
+            showlogin();
+
+    });
+
 }
 
 function setUser(loginUser) {
