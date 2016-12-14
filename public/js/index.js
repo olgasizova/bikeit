@@ -154,8 +154,10 @@ function initDashboard() {
             ],
 
             actions: {
-                join: function (target, data) {
-                    // showSignUp();
+                //"newtrip" is a name of the button on the form
+                //will be executed on click 
+                newtrip: function (target, data) {
+                    $('#img-profile').css('background-image',window.user.imgurl);
                 }
             }
 
