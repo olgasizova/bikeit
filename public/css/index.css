@@ -249,12 +249,31 @@ background-color:  #41A07D;
 
 
 .main-profile-photo {
-    height: 250px;
-    width: 250px;
+    height: 230px;
+    width: 230px;
     border-radius: 50%;
     border: 3px solid black;
-    margin: auto;
-    margin-bottom: 50px;
+    /*margin: auto;*/
+    /*margin-bottom: 10px;*/
+    /*position: absolute;*/
+    top: 0px;
+    z-index: 1;
+    right: 10px;
+
+}
+
+.placeholder {
+    height: 90px;
+
+}
+
+#header-text {
+    font-family: sans-serif;
+    color: black;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30px;
+    
 
 }
 
@@ -322,11 +341,82 @@ background-color:  #41A07D;
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  background-color: yellow;
+  background-color:#0A3530;
   min-width: 150px;
   margin: 15px;
-
+  background-image: url(/images/profile_1.png);
+  background-size: contain;
 }
+
+.photo-one {
+ background-image: url(/images/profile_1.png);
+ background-size: contain;   
+}
+
+.photo-two {
+  background-image: url(/images/profile_2.png);
+  background-size: contain;
+}
+
+.photo-three {
+  background-image: url(/images/profile_3.png);
+  background-size: contain;
+}
+
+.photo-four {
+  background-image: url(/images/profile_4.png);
+  background-size: contain;
+}
+
+.photo-five {
+  background-image: url(/images/profile_5.png);
+  background-size: contain;
+}
+
+.photo-six {
+  background-image: url(/images/profile_6.png);
+  background-size: contain;
+}
+
+
+.photo-seven {
+  background-image: url(/images/profile_7.png);
+  background-size: contain;
+}
+
+
+.photo-eight {
+  background-image: url(/images/profile_8.png);
+  background-size: contain;
+}
+
+.photo-eight {
+  background-image: url(/images/profile_8.png);
+  background-size: contain;
+}
+
+.photo-nine {
+  background-image: url(/images/profile_9.png);
+  background-size: contain;
+}
+
+.photo-ten {
+  background-image: url(/images/profile_10.png);
+  background-size: contain;
+}
+
+.photo-eleven {
+  background-image: url(/images/profile_11.png);
+  background-size: contain;
+}
+
+.photo-twelve {
+  background-image: url(/images/profile_12.png);
+  background-size: contain;
+}
+
+
+
 
 .member-name {
   padding-top: 135px;
@@ -334,9 +424,29 @@ background-color:  #41A07D;
   font-family: sans-serif;
 }
 
+.team-text {
+    color: black;
+    text-align: center;
+  font-family: sans-serif;
+  padding-top: 10px;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  margin: auto;
+  margin-left: 100px;
+}
+
 .map {
   width: 100%;
   height: 400px;
 }
 
+
+.new-trip-button {
+    /*position: absolute;*/
+    margin-top: 100px;
+    margin-left: 100px;
+
+}
 

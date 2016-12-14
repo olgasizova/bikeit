@@ -143,8 +143,8 @@ function initDashboard() {
             //recid: window.user.id,
             url: '/addtrip',
             fields: [
-                { field: 'country', type: 'text', required: false },
-                { field: 'city', type: 'text', required: false },
+                { field: 'country', type: 'text', required: true },
+                { field: 'city', type: 'text', required: true },
                 { field: 'start_addr', type: 'text', required: true },
                 { field: 'end_addr', type: 'text', required: true },
                 { field: 'meet_date', type: 'date', required: true },
