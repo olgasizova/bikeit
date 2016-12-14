@@ -158,6 +158,15 @@ function initDashboard() {
                 //will be executed on click 
                 newtrip: function (target, data) {
                     $('#img-profile').css('background-image',window.user.imgurl);
+                    $('.leader-name').text(window.user.fname + ' ' + window.user.lname);
+                    $('.team-members-container').empty();
+                    $('#new-trip-button').hide();
+                    $('#join-trip-button').hide();
+                    $('#save-trip-button').show();
+
+                    let form = this;
+                    form.record = {};
+                    form.refresh();
                 }
             }
 

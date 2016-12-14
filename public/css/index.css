@@ -321,13 +321,13 @@ background-color: #7FEFBD;
 
 #save-trip-button {
     position: absolute;
-    top: 270px;
+    top: 290px;
     right: 25px;
     display:none;
 
 }
 
-#join-button {
+#join-trip-button {
     position: absolute;
     top: 330px;
     right: 25px;
