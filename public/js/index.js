@@ -40,8 +40,8 @@ function doOnLoad() {
 function setUser(loginUser){
     window.user = loginUser;
     //var imgurl = 'url(' + window.user.imgurl +')';
-    var imgurl = window.user.imgurl;
-    $('div.profile-circle-photo').css('background-image',imgurl);
+    //var imgurl = window.user.imgurl;
+    $('div.profile-circle-photo').css('background-image',window.user.imgurl);
     
     if (window.user.id) { 
         showDashboard();
@@ -111,8 +111,9 @@ function initSignUp() {
 
             actions: {
                 save: function (target, data) {
-                    var imgurl = window.user.imgurl;
-                    var addData = {'imgurl':imgurl};
+                    let imgurl = $('#image-upload').css('background-image');
+                    window.user.imgurl = imgurl;;
+                    let addData = {'imgurl':imgurl};
                     this.save(addData,function(res) {
                         
                         setUser(res[0]);

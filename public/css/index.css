@@ -49,11 +49,18 @@ div.header{
 font-family: 'Fugaz One', cursive;
 font-size: 60px;
 position: absolute;
+color:#7FEFBD;
+}
+
+#bike {
+    /*color:#004F3F;*/
+    /*color: #7FEFBD;*/
+    color: #1D191D;
 }
 
 .profile-circle-photo {
     position: absolute;
-    right: 200px;
+    right: 170px;
     top: 25px;
     border-radius: 50%;
     width: 50px;
@@ -69,13 +76,15 @@ position: absolute;
     right: 50px;
     /*button style goes here*/
     background-color: white;
-    border: black solid 3px;
-    color: black;
+    /*border: black solid 3px;*/
+    border: none;
+    /*color: black;*/
+    color: #468368;
     padding: 15px 34px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 20px;
     outline: none;
 
 }
@@ -83,16 +92,19 @@ position: absolute;
 #dashboard-button {
     position: absolute;
     top: 20px;
-    right: 270px;
+    right: 220px;
     /*button style goes here*/
     background-color: white;
-    border: black solid 3px;
-    color: black;
+    /*border: black solid 3px;
+    color: black;*/
+    /*border: solid 3px #468368;*/
+    border: none;
+    color: #468368;
     padding: 15px 34px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 20px;
     outline: none;
 
 }
@@ -136,7 +148,8 @@ position: absolute;
 
 /*form styles go here*/
 .w2ui-form-box {
-background-color: #41A07D;
+/*background-color: #41A07D;*/
+background-color: #7FEFBD;
 }
 
 .w2ui-form {
@@ -160,17 +173,23 @@ background-color: #41A07D;
 .footer-container {
     width: 100%;
     height: 100%;
-    background-color: black;
+    /*background-color: black;*/
+    background-color: #468368;
+ 
+    
 }
 
 .footer-content {
-    color: #FAFAFA;
+    /*color: #FAFAFA;*/
+    /*color:#1D191D;*/
+    color: black;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
     padding-top: 15px;
+    font-weight: bold;
 }
 
 #form-signup{
@@ -211,7 +230,8 @@ button.w2ui-btn {
     font-size: 19px;
     padding-left: 15px;
     background-image: none;
-    background-color: #004F3F;
+    /*background-color: #004F3F;*/
+    background-color: #468368;
     color: white;
     box-shadow: none;
 }
@@ -241,10 +261,14 @@ button.w2ui-btn:hover {
 
 .dashboard-main-container {
 width: 800px;
-/*height: 500px;*/
 /*background-color: pink;*/
 margin: auto;
-background-color:  #41A07D;
+/*background-color:  #41A07D;*/
+background-color: #7FEFBD;
+}
+
+#form-dashboard {
+    height: 100%;
 }
 
 
@@ -252,7 +276,7 @@ background-color:  #41A07D;
     height: 230px;
     width: 230px;
     border-radius: 50%;
-    border: 3px solid black;
+    border: 3px solid white;
     /*margin: auto;*/
     /*margin-bottom: 10px;*/
     /*position: absolute;*/
@@ -287,46 +311,39 @@ background-color:  #41A07D;
 
 
 
-/*background*/
-
-
-/*.dash-form {
-  width: 700px;
-  margin-left: 200px;
-}*/
-
-/*#form-dashboard {
-  width: 400px;
-}*/
-
-/*.w2ui-form-box {
-  margin: auto;
-  width: 600px;
-}*/
-
-#join-button {
+#new-trip-button {
     position: absolute;
-    top: 300px;
-    right: 10px;
-    /*button style goes here*/
-    background-color: white;
-    border: black solid 3px;
-    color: black;
-    padding: 15px 34px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    outline: none;
+    top: 270px;
+    right: 25px;
+
 
 }
 
+#save-trip-button {
+    position: absolute;
+    top: 270px;
+    right: 25px;
+    display:none;
+
+}
+
+#join-button {
+    position: absolute;
+    top: 330px;
+    right: 25px;
+
+}
+
+
+
+
 .team-members-container {
-  width: 800px;
+  width: 100%;
   height: 250px;
   background-color:white;
   overflow-x: scroll;
   overflow-y: hidden;
+  margin-top: 100px;
 }
 
 
@@ -443,10 +460,18 @@ background-color:  #41A07D;
 }
 
 
-.new-trip-button {
-    /*position: absolute;*/
-    margin-top: 100px;
-    margin-left: 100px;
 
+
+/*.w2ui-panel-content {
+    background-color: white;
+}*/
+
+/*.dashboard-main-container {
+    background-color: white;
+}*/
+
+element.style {
+    background-color: #7FEFBD;
 }
+
 

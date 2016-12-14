@@ -1,4 +1,5 @@
-// credit for integrating Dropzone with Cloudinary goes to Dan Hough at http://danhough.com/blog/dropzone-cloudinary/
+// credit for integrating Dropzone with Cloudinary goes 
+//to Dan Hough at http://danhough.com/blog/dropzone-cloudinary/
 
 
 function initImageUpload() {
