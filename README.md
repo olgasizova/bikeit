@@ -22,11 +22,15 @@ Back-end:
 Front-end:
 * JavaScript
 * HTML & CSS
-* Scrollmagic
+
 
 API's:
 * MapBox Directions
-* Inspirational Quotes API for landing page (this is a maybe)
+* Cloudinary
+
+Framework:
+* W2ui framework 
+
 
 ### Wireframes
 
