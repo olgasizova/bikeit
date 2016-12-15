@@ -41,5 +41,8 @@ Router.route('/addtrip')
 Router.route('/jointeam')
   .post(team.joinTeam, team.getTeamMembers, sendJSONresp);
 
+//get trips
+Router.route('/alltrips')
+  .post(trip.getTrips, sendJSONresp);
 
 module.exports = Router;

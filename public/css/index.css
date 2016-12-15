@@ -496,4 +496,11 @@ element.style {
     background-color: #7FEFBD;
 }
 
+.trip-list {
+    width: 100%;
+    height: 521px;
+    background-color: yellow;
+
+}
+
 

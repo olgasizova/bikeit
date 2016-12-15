@@ -47,8 +47,9 @@ function setUser(loginUser) {
 
     if (window.user.id) {
         showDashboard();
-        w2Layout.show('left');
-        w2Layout.show('right');
+        
+        
+        //w2Layout.show('right');
     }
 
 }
@@ -134,8 +135,8 @@ function initSignUp() {
 }
 
 function showDashboard() {
+    showAllTripsList();   
     w2Layout.load('main', 'html/part_dashboard.html', '', initDashboard);
-
 }
 
 
@@ -208,7 +209,7 @@ function initDashboard() {
                 }
 
                 let form = this;
-                form.url = '/jointrip';
+                form.url = '/jointeam';
                 this.save(window.user, function (res) {
                     $('#new-trip-button').show();
                     $('#join-trip-button').hide();
@@ -224,9 +225,32 @@ function initDashboard() {
 
     $('#form-login').fadeIn(1000);
 
+}
 
 
+function showAllTripsList() {
+    w2Layout.show('left');
+    w2Layout.load('left', 'html/part_alltrips_list.html', '', initAllTripsList);
 
 }
 
+//partial credit for form grid template goes to w2ui
+
+
+
+function initAllTripsList() {
+    $('#all-trips-list').w2grid({ 
+        name: 'all-trips-list', 
+        url: '/alltrips',
+        //method: 'GET', // need this to avoid 412 error on Safari
+        columns: [                
+            { field: 'country', caption: 'Country', size: '45%' },
+            { field: 'city', caption: 'City', size: '45%' },
+            { field: 'meet_date', caption: 'Date', size: '10%' }
+        ]
+    });    
+    
+
+
+}
 
