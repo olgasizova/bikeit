@@ -35,12 +35,7 @@ function doOnLoad() {
 
     setUser(window.user);
 
-// on mouse down if user is not logged in, then show login form
-    $('.trip-action').mousedown(function(){
-        if(!window.user.id)
-            showlogin();
 
-    });
 
 }
 
@@ -140,7 +135,9 @@ function initSignUp() {
 
 function showDashboard() {
     w2Layout.load('main', 'html/part_dashboard.html', '', initDashboard);
+
 }
+
 
 function initDashboard() {
 
@@ -164,6 +161,15 @@ function initDashboard() {
             //"newtrip" is a name of the button on the form
             //will be executed on click 
             newtrip: function (target, data) {
+            
+            // if user is not logged in show login screen
+                if(!window.user.id){
+                     showLogin();
+                     return false;
+                }
+                   
+
+
                 $('#img-profile').css('background-image', window.user.imgurl);
                 $('.leader-name').text(window.user.fname + ' ' + window.user.lname);
                 $('.team-members-container').empty();
@@ -176,6 +182,12 @@ function initDashboard() {
                 form.refresh();
             },
             savetrip: function (target, data) {
+                
+                if(!window.user.id){
+                     showLogin();
+                     return false;
+                }
+
                 let form = this;
                 form.url = '/addtrip';
                 this.save(window.user, function (res) {
