@@ -7168,7 +7168,9 @@ w2utils.event = {
             if (this.total <= 0 && !url && this.searchData.length === 0) {
                 this.total = this.records.length;
             }
-            this.toolbar.disable('w2ui-edit', 'w2ui-delete');
+            if(this.toolbar)if(this.toolbar.disable){
+                this.toolbar.disable('w2ui-edit', 'w2ui-delete');
+            }                
             if (!this.box) return;
             // event before
             var edata = this.trigger({ phase: 'before', target: this.name, type: 'refresh' });

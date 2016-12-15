@@ -498,9 +498,33 @@ element.style {
 
 .trip-list {
     width: 100%;
-    height: 521px;
+    height: 100%;
     background-color: yellow;
 
 }
 
+.w2ui-grid-data {
+    height: 70px;
+  
+    /*background-color:white;*/
+}
 
+.w2ui-grid-data > div {
+    height: 70px;
+    font-size: 16px;
+    /*background-color:white;*/
+}
+
+.w2ui-col-header {
+    background-color:  #468368;
+    color: white;
+    height: 70px;
+    font-size: 18px;
+  
+
+}
+
+
+.w2ui-even {
+    background-color:  #7FEFBD;
+}

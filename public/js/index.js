@@ -47,8 +47,8 @@ function setUser(loginUser) {
 
     if (window.user.id) {
         showDashboard();
-        
-        
+
+
         //w2Layout.show('right');
     }
 
@@ -135,7 +135,7 @@ function initSignUp() {
 }
 
 function showDashboard() {
-    showAllTripsList();   
+    showAllTripsList();
     w2Layout.load('main', 'html/part_dashboard.html', '', initDashboard);
 }
 
@@ -144,7 +144,7 @@ function initDashboard() {
 
 
     //partial credit to W2ui.com for form definition
-    var $frm = $('#form-dashboard').w2form({
+    window.$frm = $('#form-dashboard').w2form({
         name: 'form-dashboard',
         //recid: window.user.id,
         url: '/addtrip',
@@ -197,8 +197,8 @@ function initDashboard() {
                     $('#new-trip-button').show();
                     $('#join-trip-button').hide();
                     $('#save-trip-button').hide();
-
-
+                    window.$allTripsList.reload();
+ 
                 });
             },
             jointrip: function (target, data) {
@@ -239,17 +239,42 @@ function showAllTripsList() {
 
 
 function initAllTripsList() {
-    $('#all-trips-list').w2grid({ 
-        name: 'all-trips-list', 
+    window.$allTripsList = $('#all-trips-list').w2grid({
+        name: 'all-trips-list',
         url: '/alltrips',
+        recid: 'id',
+        multiSelect: false,
         //method: 'GET', // need this to avoid 412 error on Safari
-        columns: [                
-            { field: 'country', caption: 'Country', size: '45%' },
-            { field: 'city', caption: 'City', size: '45%' },
-            { field: 'meet_date', caption: 'Date', size: '10%' }
-        ]
-    });    
-    
+        columns: [
+            { field: 'country', caption: 'Country', size: '50%'},
+            { field: 'city', caption: 'City', size: '50%'}
+ //           { field: 'meet_date', caption: 'Date', size: '30%', render: 'date:mm-dd' }
+        ],
+        onClick: function (event) {
+            var grid = this;
+            var form = window.$frm;
+            console.log(event);
+            event.onComplete = function () {
+                var sel = grid.getSelection();
+                console.log(sel);
+                if (sel.length == 1) {
+                    form.recid = sel[0];
+                    form.record = $.extend(true, {}, grid.get(sel[0]));
+                    form.refresh();
+
+                    // update leader image and name on select
+                    $('#img-profile').css('background-image', form.record.imgurl);
+                    $('.leader-name').text(form.record.fname + ' ' + form.record.lname);
+
+
+
+                } else {
+                    form.clear();
+                }
+            }
+        }
+    });
+
 
 
 }
