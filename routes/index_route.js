@@ -2,6 +2,7 @@
 const Router = require('express').Router();
 const person = require('../models/person_model');
 const trip = require('../models/trip_model');
+const team = require('../models/team_model');
 
 
 
@@ -35,6 +36,10 @@ Router.route('/signup')
 Router.route('/addtrip')
 
   .post(trip.addTrip, trip.getTrips, sendJSONresp);
+
+//join team
+Router.route('/jointeam')
+  .post(team.joinTeam, team.getTeamMembers, sendJSONresp);
 
 
 module.exports = Router;

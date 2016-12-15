@@ -161,13 +161,15 @@ function initDashboard() {
             //"newtrip" is a name of the button on the form
             //will be executed on click 
             newtrip: function (target, data) {
-            
-            // if user is not logged in show login screen
-                if(!window.user.id){
-                     showLogin();
-                     return false;
+
+                // if user is not logged in show login screen
+                if (!window.user.id) {
+                    showLogin();
+                    return false;
                 }
-                   
+
+
+
 
 
                 $('#img-profile').css('background-image', window.user.imgurl);
@@ -182,14 +184,31 @@ function initDashboard() {
                 form.refresh();
             },
             savetrip: function (target, data) {
-                
-                if(!window.user.id){
-                     showLogin();
-                     return false;
+
+                if (!window.user.id) {
+                    showLogin();
+                    return false;
                 }
 
                 let form = this;
                 form.url = '/addtrip';
+                this.save(window.user, function (res) {
+                    $('#new-trip-button').show();
+                    $('#join-trip-button').hide();
+                    $('#save-trip-button').hide();
+
+
+                });
+            },
+            jointrip: function (target, data) {
+
+                if (!window.user.id) {
+                    showLogin();
+                    return false;
+                }
+
+                let form = this;
+                form.url = '/jointrip';
                 this.save(window.user, function (res) {
                     $('#new-trip-button').show();
                     $('#join-trip-button').hide();
